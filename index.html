@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surozawa Air</title>
+    
     <style>
         body {
             margin: 0;
@@ -19,6 +20,7 @@
             justify-content: center;
             transition: background-image 0.5s ease;
         }
+        
         .container {
             max-width: 90%;
             margin-bottom: 20px;
@@ -190,6 +192,7 @@
                         <h3>Bayar Lebih Murah</h3>
                     </div>
                 </div>
+                                
                 <!-- Add more cards as needed -->
             </div>
         </div>
@@ -202,6 +205,7 @@
     </div>
 </body>
 <script>
+    
     document.title = "Surozawa";
     const backgroundImageURLs = [
             'assets/1.jpg',
@@ -211,15 +215,16 @@
 
         let currentIndex = 0;
 
-        // Function to change the background image
+        // Dom untuk mengatur perpindahan background image
         function changeBackgroundImage() {
             document.body.style.backgroundImage = `url('${backgroundImageURLs[currentIndex]}')`;
             currentIndex = (currentIndex + 1) % backgroundImageURLs.length;
         }
-
-        // Set an interval to change background image every 5 seconds (5000 milliseconds)
+        // waktu perpindahan background
         setInterval(changeBackgroundImage, 3000);
 
+
+        //ini untuk mengatur corousell
 const buttonsWrapper = document.querySelector(".map");
 const slides = document.querySelector(".inner");
 
