@@ -4,16 +4,68 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surozawa Air</title>
+    <title>Surozawa Airlines</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('assets/1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .logo img {
+		width: 300px;
+        height: auto;
+		margin-bottom: 50px;
+	}
+        .overlay {
+            padding: 20px;
+            max-width: 300px;
+            width: 90%;
+            margin: auto;
+            background: none; 
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        p {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #00457F;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+        .white-text {
+            color: #fff; 
+        }
+    </style>
 </head>
 <body>
     <div class="overlay">
-        <h1><center><span class="white-text"><i>SUROZAWA AIR</i></span></center></h1>
-         <h4><center><span class="white-text">The Airline Of konoha</span></center></h4>
-        <center><a href="login.html">Login</a></center>
-        <center><a href="register.html">Register</a></center>
+    <div class="logo">
+            <center><img src="assets/logo4.png" alt="Logoweb"></center>
+        </div>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
         
     </div>
 </body>
 </html>
-
