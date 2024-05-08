@@ -32,7 +32,7 @@
             color: #333;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
-        input {
+        input, button {
             padding: 10px;
             margin-bottom: 10px;
             width: 100%;
@@ -41,63 +41,66 @@
             box-sizing: border-box;
         }
         button {
-            padding: 10px 20px;
             background-color: #007bff;
             color: white;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            margin-right: 10px;
         }
         button:hover {
             background-color: #0056b3;
         }
-
-        .button {
-            display: inline-block;
-            background-color: #0099ff;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-top: 10px; 
-        }
-        
-        .button:hover {
-            background-color: #66ccff; 
-        }
-                
-        .back {
+        .back, .register {
             margin-top: 20px;
             display: inline-block;
             text-decoration: none;
             color: #007bff;
             font-weight: bold;
-            margin-right: 10px;
         }
         .register {
-            margin-top: 20px;
-            display: inline-block;
-            text-decoration: none;
-            color: #007bff;
-            font-weight: bold;
+            margin-left: 10px;
         }
     </style>
 </head>
 <body>
     <div class="overlay">
         <h1>Login</h1>
-        <form action="submit-login.php" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <input type="text" name="username" placeholder="Username" required>
-            <p><input type="password" name="password" placeholder="Password" required></p>
+            <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Login</button>
-            <a href="Admin.html" class="button">Dashboard</a>
         </form>
-        <br><a href="index.html" class="back">Back</a>
-        <a href="register.html" class="register">Register</a>  
+        <a href="index.php" class="back">Back</a>
+        <a href="register.php" class="register">Register</a>  
     </div>
-</body>
 
-</script>
+<?php
+session_start();
+
+// Dummy data for example
+$dummy_users = [
+    'wafa69' => '69wafa',
+    'Admin' => '000'
+];
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Check credentials
+    if (isset($dummy_users[$username]) && $dummy_users[$username] === $password) {
+        // Set session variables
+        $_SESSION['logged_in'] = true;
+        $_SESSION['username'] = $username;
+
+        // Redirect to the user dashboard or homepage
+        header("Location: admin.php");
+        exit;
+    } else {
+        echo "<script>alert('Hayo, passwordnya salah loh');</script>";
+    }
+}
+?>
+
+</body>
 </html>

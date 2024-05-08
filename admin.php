@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: index.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,10 +21,10 @@
       <div class="logo">
         <img src="assets/logo5.png" alt="Logo" />
       </div>
-      <a href="kategori.html">Kategori</a>
-      <a href="booking.html">Booking</a>
-      <a href="transaksi.html">Transaksi</a>
-      <a href="Index.html">Keluar</a>
+      <a href="kategori.php">Kategori</a>
+      <a href="booking.php">Booking</a>
+      <a href="transaksi.php">Transaksi</a>
+      <a href="logout.php">Keluar</a>
     </div>
 
     <div class="content">

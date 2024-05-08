@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: index.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +48,7 @@
                 <!-- Add more rows as needed -->
             </tbody>
         </table>
-        <a href="admin.html" class="back-button">Kembali ke Admin Dashboard</a>
+        <a href="admin.php" class="back-button">Kembali ke Admin Dashboard</a>
     </div>
 </body>
 </html>

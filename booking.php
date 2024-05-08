@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: index.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -61,6 +68,6 @@
     </form>
 
     <!-- Button "Kembali ke Dashboard" -->
-    <button onclick="window.location.href='admin.html'" class="back-button">Kembali ke Dashboard</button>
+    <button onclick="window.location.href='admin.php'" class="back-button">Kembali ke Dashboard</button>
 </body>
 </html>

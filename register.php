@@ -138,11 +138,11 @@
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <input type="email" name="email" placeholder="Email" required>
-            <button type="Admin.html">Submit</button>
+            <button type="Admin.php">Submit</button>
             <a class="recov" onclick="openRecoveryPopup()">Recovery</a>
         </form>
-        <a href="index.html" class="back">Back</a>
-        <a href="login.html" class="register">Login</a>
+        <a href="index.php" class="back">Back</a>
+        <a href="login.php" class="register">Login</a>
     </div>
 
     <!-- Pop-up untuk Lupa Password -->

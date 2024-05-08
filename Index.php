@@ -164,8 +164,8 @@
             <div class="logo">
                 <center><img src="assets/logo4.png" alt="Logoweb"></center>
             </div>
-            <a href="login.html">Login</a>
-            <a href="register.html">Register</a>    
+            <a href="login.php">Login</a>
+            <a href="register.php">Register</a>    
         </div>
     </div>
     <div class="center">
