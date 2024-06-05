@@ -76,31 +76,36 @@
 
 <?php
 session_start();
-
-// Dummy data for example
-$dummy_users = [
-    'wafa69' => '69wafa',
-    'Admin' => '000'
-];
+include 'connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Check credentials
-    if (isset($dummy_users[$username]) && $dummy_users[$username] === $password) {
-        // Set session variables
-        $_SESSION['logged_in'] = true;
-        $_SESSION['username'] = $username;
+    // Query untuk mengambil data pengguna berdasarkan username
+    $sql = "SELECT * FROM user WHERE username = '$username'";
+    $result = mysqli_query($koneksi, $sql);
 
-        // Redirect to the user dashboard or homepage
-        header("Location: admin.php");
-        exit;
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        // Verifikasi password
+        if (password_verify($password, $row['password'])) {
+            // Set session variables
+            $_SESSION['logged_in'] = true;
+            $_SESSION['username'] = $username;
+
+            // Redirect ke halaman dashboard
+            header("Location: dashboard.php");
+            exit();
+        } else {
+            echo "<script>alert('Hayo, passwordnya salah loh');</script>";
+        }
     } else {
-        echo "<script>alert('Hayo, passwordnya salah loh');</script>";
+        echo "<script>alert('Username tidak ditemukan');</script>";
     }
 }
-?>
 
+mysqli_close($koneksi);
+?>
 </body>
 </html>

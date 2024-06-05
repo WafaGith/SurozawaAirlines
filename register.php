@@ -133,12 +133,12 @@
 <body>
     <div class="overlay">
         <h1>Register</h1>
-        <form action=" " method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <input type="text" name="name" placeholder="Nama Lengkap" required>
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <input type="email" name="email" placeholder="Email" required>
-            <button type="Admin.php">Submit</button>
+            <button type="submit">Submit</button>
             <a class="recov" onclick="openRecoveryPopup()">Recovery</a>
         </form>
         <a href="index.php" class="back">Back</a>
@@ -192,5 +192,34 @@
         }
     </script>
 
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        include 'connection.php';
+
+        $name = $_POST['name'];
+        $username = $_POST['username'];
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $email = $_POST['email'];
+
+        // Query untuk memeriksa apakah username atau email sudah ada
+        $checkQuery = "SELECT * FROM user WHERE username='$username' OR email='$email'";
+        $result = mysqli_query($koneksi, $checkQuery);
+
+        if (mysqli_num_rows($result) > 0) {
+            echo "<script>alert('Username atau Email sudah terdaftar.');</script>";
+        } else {
+            // Query untuk menyimpan data pengguna ke tabel user
+            $sql = "INSERT INTO user (username, password, email, name) VALUES ('$username', '$password', '$email', '$name')";
+
+            if (mysqli_query($koneksi, $sql)) {
+                echo "<script>alert('Registrasi berhasil. Silakan login.'); window.location.href='login.php';</script>";
+            } else {
+                echo "<script>alert('Terjadi kesalahan. Silakan coba lagi.');</script>";
+            }
+        }
+
+        mysqli_close($koneksi);
+    }
+    ?>
 </body>
 </html>
